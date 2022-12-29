@@ -13,17 +13,29 @@ class ViewController: UIViewController {
     // MARK: - Outlets
     
     
+    let customView = CustomView()
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        let bounds = UIScreen.main.bounds
+
+        view.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
+        gradientForm()
+        view.setNeedsUpdateConstraints()
     }
     
     // MARK: - Setup
-
-
-
+    func gradientForm() {
+        let layer = CAGradientLayer()
+        let bounds = UIScreen.main.bounds
+        layer.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
+        layer.colors = [
+            UIColor(red: 210/255, green: 195/255, blue: 247/255, alpha: 1.0).cgColor,
+            UIColor(red: 157/255, green: 194/255, blue: 247/255, alpha: 1.0).cgColor
+        ]
+        view.layer.addSublayer(layer)
+        }
 }
 
 // MARK: Custom View
